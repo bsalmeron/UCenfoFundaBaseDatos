@@ -36,4 +36,17 @@ Exec obtenerProductosCategoria 'Beverages'
 --la cantidad de STOCK
 select * from Products
 
- 
+CREATE PROCEDURE actualizarStock 
+	@ID int,
+	@Stock int
+as
+begin 
+	Update Products
+	set UnitsInStock=@Stock
+	where ProductID = @ID
+end
+
+
+select * from Products
+
+Exec actualizarStock 6 , 1
