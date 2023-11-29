@@ -50,3 +50,35 @@ end
 select * from Products
 
 Exec actualizarStock 6 , 1
+
+---Manejo Fechas
+
+SELECT CONVERT(DATE, OrderDate), OrderDate
+FROM Orders
+WHERE CONVERT(DATE, OrderDate) = '1996-07-04';
+
+
+SELECT *
+FROM Orders
+WHERE CONVERT(DATE, OrderDate) BETWEEN '1996-07-01' AND '1996-07-31';
+
+
+SELECT EmployeeID, LastName, BirthDate,
+    DATEDIFF(YEAR, BirthDate, GETDATE()) AS Age
+FROM Employees;
+
+
+SELECT P.ProductID, ProductName, O.OrderID, OrderDate
+FROM [Order Details] OD
+INNER JOIN Orders O ON OD.OrderID = O.OrderID
+INNER JOIN Products P ON OD.ProductID = P.ProductID
+WHERE DATEPART(MONTH, O.OrderDate) = 5;
+
+
+SELECT DATEPART(YEAR, OrderDate) AS Year,
+    DATEPART(MONTH, OrderDate) AS Month,
+    SUM(Quantity) AS TotalQuantity
+FROM [Order Details] OD
+INNER JOIN Orders O ON OD.OrderID = O.OrderID
+GROUP BY DATEPART(YEAR, OrderDate), DATEPART(MONTH, OrderDate)
+ORDER BY Year, Month;
