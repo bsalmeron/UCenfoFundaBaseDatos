@@ -17,3 +17,22 @@
 
 --4- Retornamos 
 
+
+--Ejemplos 
+--1-  Obtener Productos(nombre, precio) por Categoría (nombre)
+ use Northwind
+create procedure obtenerProductosCategoria
+	@CategoryName varchar(50)
+AS
+Begin 
+select ProductName, UnitPrice 
+ From Products INNER JOIN 
+ Categories on Products.CategoryID = Categories.CategoryID
+ where Categories.CategoryName =  @CategoryName
+end
+
+
+Exec obtenerProductosCategoria 'Beverages'
+
+
+ 
