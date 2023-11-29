@@ -30,9 +30,10 @@ select ProductName, UnitPrice
  Categories on Products.CategoryID = Categories.CategoryID
  where Categories.CategoryName =  @CategoryName
 end
-
-
 Exec obtenerProductosCategoria 'Beverages'
 
+--2. Crear SP, para actualizar por medio del Id del producto,
+--la cantidad de STOCK
+select * from Products
 
  
