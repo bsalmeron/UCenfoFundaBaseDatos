@@ -82,3 +82,5 @@ FROM [Order Details] OD
 INNER JOIN Orders O ON OD.OrderID = O.OrderID
 GROUP BY DATEPART(YEAR, OrderDate), DATEPART(MONTH, OrderDate)
 ORDER BY Year, Month;
+
+ 
